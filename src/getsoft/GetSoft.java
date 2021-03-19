@@ -5,6 +5,8 @@
  */
 package getsoft;
 
+import views.login;
+
 /**
  *
  * @author klein
@@ -16,6 +18,8 @@ public class GetSoft {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        login lo = new login();
+        lo.setVisible(true);
         
     }
     
