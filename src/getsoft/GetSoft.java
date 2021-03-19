@@ -6,6 +6,7 @@
 package getsoft;
 
 import views.login;
+import views.main;
 
 /**
  *
@@ -18,9 +19,10 @@ public class GetSoft {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login lo = new login();
-        lo.setVisible(true);
-        
+        //login lo = new login();
+        //lo.setVisible(true);
+        main ma = new main();
+        ma.setVisible(true);
     }
     
 }

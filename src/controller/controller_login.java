@@ -9,6 +9,6 @@ package controller;
  *
  * @author klein
  */
-public class controller {
+public class controller_login {
     
 }

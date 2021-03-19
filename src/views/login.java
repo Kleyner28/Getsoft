@@ -135,9 +135,9 @@ public class login extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptarLogin;
+    public javax.swing.JButton jButtonAceptarLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelGithub;
@@ -145,11 +145,11 @@ public class login extends javax.swing.JFrame {
     public javax.swing.JLabel jLabelfondologin;
     private javax.swing.JLabel jLabelpassword;
     private javax.swing.JLabel jLabeluser;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    public javax.swing.JPanel jPanel1;
+    public javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextFieldUser;
+    public javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
 }

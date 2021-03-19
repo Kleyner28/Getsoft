@@ -9,6 +9,6 @@ package model;
  *
  * @author klein
  */
-public class model {
+public class model_login {
     
 }
