@@ -49,6 +49,8 @@ public class ControllerLogin implements ActionListener{
                 
                 slogin.setVisible(false);
                 if(id_dpto_user==1){
+                    pri.id_envio.setVisible(false);
+                     pri.labelId_envio.setVisible(false);
                     pri.nombreForm.setText("Secretaria");
                 }else{
                     if(id_dpto_user==2){
@@ -80,6 +82,14 @@ public class ControllerLogin implements ActionListener{
     }
     public void ocultarCajasSecretaria(main pri){
         pri.identificacion.setVisible(false);
-        
+         pri.nombre.setVisible(false);
+         pri.apellido.setVisible(false);
+         pri.departamento.setVisible(false);
+         pri.correo.setVisible(false);
+         pri.prioridad.setVisible(false);
+         pri.id_envio.setVisible(true);
+         pri.id_envio.setLocation(100, 90);
+         pri.labelId_envio.setVisible(true);
+         pri.labelId_envio.setLocation(20,100);
     }
 }

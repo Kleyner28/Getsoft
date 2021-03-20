@@ -6,6 +6,7 @@
 package views;
 //import Class.sSlide;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDialog;
@@ -14,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,8 +30,9 @@ public class main extends javax.swing.JFrame {
     
     private int ejeX;
     private int ejeY;
+    private Color color;
     
-    public main() {
+    public main() {        
         initComponents();
         this.setLocationRelativeTo(null);
          try{
@@ -37,9 +40,9 @@ public class main extends javax.swing.JFrame {
   JFrame.setDefaultLookAndFeelDecorated(true);
   JDialog.setDefaultLookAndFeelDecorated(true);  
   UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-  //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+  
 }
-catch (Exception e)
+catch ( ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e)
  {
   e.printStackTrace();
  }
@@ -107,7 +110,7 @@ catch (Exception e)
         btnAdjuntar = new javax.swing.JButton();
         nombreArchivo = new javax.swing.JTextField();
         btnEnviar = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        labelId_envio = new javax.swing.JLabel();
         id_envio = new javax.swing.JTextField();
         jPanelMsgReceived = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -145,6 +148,8 @@ catch (Exception e)
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         btnCerrarSesion = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -199,7 +204,7 @@ catch (Exception e)
 
         jPanelMenu.add(jPanelSendedOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 50));
 
-        jPanelReceived.setBackground(new java.awt.Color(20, 20, 70));
+        jPanelReceived.setBackground(new java.awt.Color(0, 0, 53));
         jPanelReceived.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelReceived.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -239,7 +244,7 @@ catch (Exception e)
 
         jPanelMenu.add(jPanelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, 50));
 
-        jPanelNew.setBackground(new java.awt.Color(20, 20, 70));
+        jPanelNew.setBackground(new java.awt.Color(0, 0, 53));
         jPanelNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelNew.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -335,7 +340,7 @@ catch (Exception e)
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel19.setText("Area de peticion");
-        jPanelNewRequest.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanelNewRequest.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         identificacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanelNewRequest.add(identificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, 30));
@@ -364,10 +369,10 @@ catch (Exception e)
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel23.setText("Correo");
-        jPanelNewRequest.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
+        jPanelNewRequest.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
 
         correo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        jPanelNewRequest.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 170, 30));
+        jPanelNewRequest.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 170, 30));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel24.setText("Prioridad");
@@ -375,7 +380,7 @@ catch (Exception e)
 
         departamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Financiero", "Resolucion de problemas" }));
         departamento.setBorder(null);
-        jPanelNewRequest.add(departamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, 30));
+        jPanelNewRequest.add(departamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, 30));
 
         jLabel25.setBackground(new java.awt.Color(204, 204, 204));
         jLabel25.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -392,7 +397,8 @@ catch (Exception e)
         btnAdjuntar.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
         btnAdjuntar.setForeground(new java.awt.Color(255, 255, 255));
         btnAdjuntar.setText("Seleccionar archivo");
-        btnAdjuntar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        btnAdjuntar.setBorder(null);
+        btnAdjuntar.setBorderPainted(false);
         btnAdjuntar.setFocusPainted(false);
         jPanelNewRequest.add(btnAdjuntar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 120, 30));
 
@@ -405,11 +411,14 @@ catch (Exception e)
         btnEnviar.setText("Enviar");
         btnEnviar.setBorder(null);
         btnEnviar.setBorderPainted(false);
+        btnEnviar.setFocusPainted(false);
         jPanelNewRequest.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, 80, 30));
 
-        jLabel12.setText("Id envio:");
-        jPanelNewRequest.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 70, 30));
-        jPanelNewRequest.add(id_envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 100, 30));
+        labelId_envio.setText("Id envio:");
+        jPanelNewRequest.add(labelId_envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 70, 30));
+
+        id_envio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        jPanelNewRequest.add(id_envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 140, 30));
 
         jTab1.addTab("tab2", jPanelNewRequest);
 
@@ -551,7 +560,6 @@ catch (Exception e)
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("--------------");
         jPanel3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 130, 20));
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -568,7 +576,6 @@ catch (Exception e)
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setText("--------------");
         jPanel3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 130, 20));
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -579,7 +586,6 @@ catch (Exception e)
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("--------------");
         jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 130, 20));
 
         jLabel42.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -599,14 +605,34 @@ catch (Exception e)
 
         jPanelAccount.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 530, 340));
 
+        jLabel46.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(51, 153, 255));
         jLabel46.setText("Activar Modo Oscuro");
-        jPanelAccount.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
+        jPanelAccount.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
 
+        jLabel47.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(51, 153, 255));
         jLabel47.setText("Activar notifiaciones");
-        jPanelAccount.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
+        jPanelAccount.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
 
+        btnCerrarSesion.setBackground(new java.awt.Color(0, 102, 255));
         btnCerrarSesion.setText("Cerrar Sesion");
-        jPanelAccount.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 100, 30));
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setBorderPainted(false);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanelAccount.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 160, 30));
+
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setBorder(null);
+        jPanelAccount.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setBorder(null);
+        jPanelAccount.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
 
         jTab1.addTab("tab5", jPanelAccount);
 
@@ -635,32 +661,40 @@ catch (Exception e)
         // TODO add your handling code here:
         jTab1.setSelectedIndex(0);
         jPanelHome.setBackground(new java.awt.Color(0,151,240));
-        jPanelNew.setBackground(new java.awt.Color(20,20,70));
-        jPanelReceived.setBackground(new java.awt.Color(20,20,70));
+        jPanelNew.setBackground(new java.awt.Color(0,0,53));
+        jPanelReceived.setBackground(new java.awt.Color(0,0,53));
+        jPanelSendedOption.setBackground(new java.awt.Color(0,0,53));
+        jPanelAccountOption.setBackground(new java.awt.Color(0,0,53));
     }//GEN-LAST:event_jPanelHomeMouseClicked
 
     private void jPanelNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelNewMouseClicked
         // TODO add your handling code here:
         jTab1.setSelectedIndex(1); 
         jPanelNew.setBackground(new java.awt.Color(0,151,240));
-        jPanelHome.setBackground(new java.awt.Color(20,20,70));
-        jPanelReceived.setBackground(new java.awt.Color(20,20,70));        
+        jPanelHome.setBackground(new java.awt.Color(0,0,53));
+        jPanelReceived.setBackground(new java.awt.Color(0,0,53));
+        jPanelSendedOption.setBackground(new java.awt.Color(0,0,53));
+        jPanelAccountOption.setBackground(new java.awt.Color(0,0,53));
     }//GEN-LAST:event_jPanelNewMouseClicked
 
     private void jPanelReceivedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelReceivedMouseClicked
         // TODO add your handling code here:
         jTab1.setSelectedIndex(2);
         jPanelReceived.setBackground(new java.awt.Color(0,151,240));
-        jPanelHome.setBackground(new java.awt.Color(20,20,70));
-        jPanelNew.setBackground(new java.awt.Color(20,20,70));
+        jPanelHome.setBackground(new java.awt.Color(0,0,53));
+        jPanelNew.setBackground(new java.awt.Color(0,0,53));
+        jPanelSendedOption.setBackground(new java.awt.Color(0,0,53));
+        jPanelAccountOption.setBackground(new java.awt.Color(0,0,53));
     }//GEN-LAST:event_jPanelReceivedMouseClicked
 
     private void jPanelSendedOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSendedOptionMouseClicked
         // TODO add your handling code here:
         jTab1.setSelectedIndex(3);
-        jPanelHome.setBackground(new java.awt.Color(0,151,240));
-        jPanelNew.setBackground(new java.awt.Color(20,20,70));
-        jPanelReceived.setBackground(new java.awt.Color(20,20,70));
+        jPanelHome.setBackground(new java.awt.Color(0,0,53));
+        jPanelNew.setBackground(new java.awt.Color(0,0,53));
+        jPanelReceived.setBackground(new java.awt.Color(0,0,53));
+        jPanelSendedOption.setBackground(new java.awt.Color(0,151,240));
+        jPanelAccountOption.setBackground(new java.awt.Color(0,0,53));
     }//GEN-LAST:event_jPanelSendedOptionMouseClicked
 
     private void jPanelAccountOptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAccountOptionMouseEntered
@@ -670,9 +704,11 @@ catch (Exception e)
     private void jPanelAccountOptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelAccountOptionMouseClicked
         // TODO add your handling code here:
         jTab1.setSelectedIndex(4);
-        jPanelHome.setBackground(new java.awt.Color(0,151,240));
-        jPanelNew.setBackground(new java.awt.Color(20,20,70));
-        jPanelReceived.setBackground(new java.awt.Color(20,20,70));
+        jPanelHome.setBackground(new java.awt.Color(0,0,53));
+        jPanelNew.setBackground(new java.awt.Color(0,0,53));
+        jPanelReceived.setBackground(new java.awt.Color(0,0,53));
+        jPanelSendedOption.setBackground(new java.awt.Color(0,0,53));
+        jPanelAccountOption.setBackground(new java.awt.Color(0,151,240));
     }//GEN-LAST:event_jPanelAccountOptionMouseClicked
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
@@ -689,6 +725,14 @@ catch (Exception e)
     private void btnBuscarRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRecActionPerformed
         System.out.println("hola");
     }//GEN-LAST:event_btnBuscarRecActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        login log = new login();
+        JOptionPane.showMessageDialog(null,"Cesion cerrada exitosamente");
+        log.setVisible(true);
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,7 +757,6 @@ catch (Exception e)
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -770,11 +813,14 @@ catch (Exception e)
     private javax.swing.JPanel jPanelNewRequest;
     private javax.swing.JPanel jPanelReceived;
     private javax.swing.JPanel jPanelSendedOption;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTab1;
+    public javax.swing.JLabel labelId_envio;
     public javax.swing.JTextField nombre;
     public javax.swing.JTextField nombreArchivo;
     public javax.swing.JLabel nombreForm;

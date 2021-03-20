@@ -5,8 +5,13 @@
  */
 package views;
 
+import com.placeholder.PlaceHolder;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -18,19 +23,24 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    private int x;
+    private int y;
+    
     public login() {
+        
         initComponents();
-         try{
- 
-  JFrame.setDefaultLookAndFeelDecorated(true);
-  JDialog.setDefaultLookAndFeelDecorated(true);  
-  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-  //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-}
-catch (Exception e)
- {
-  e.printStackTrace();
- }
+        PlaceHolder holder = new PlaceHolder(cajaUser, "Usuario");
+        PlaceHolder holder2 = new PlaceHolder(cajaContra, "Contraseña");
+        
+        try {
+
+            JFrame.setDefaultLookAndFeelDecorated(true);
+            JDialog.setDefaultLookAndFeelDecorated(true);
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -64,10 +74,19 @@ catch (Exception e)
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelfondologin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-vector-tecnologia-brillante-abstracto-poli-baja-gris_91248-20.jpg"))); // NOI18N
-        jLabelfondologin.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         jPanel1.add(jLabelfondologin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 490));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
@@ -98,7 +117,12 @@ catch (Exception e)
 
         jLabel2.setText("Olvido la contraseña?");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 130, 20));
 
         btnEntrar.setBackground(new java.awt.Color(0, 153, 101));
@@ -124,14 +148,29 @@ catch (Exception e)
         jLabelGoogle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/google.png"))); // NOI18N
         jLabelGoogle.setToolTipText("");
         jLabelGoogle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelGoogle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelGoogleMouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabelGoogle, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
 
         jLabelGithub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logotipo-de-github.png"))); // NOI18N
         jLabelGithub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelGithub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelGithubMouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabelGithub, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/error.png"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,6 +187,32 @@ catch (Exception e)
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method create a link a google
+     */
+    
+    private void enlaceGoogle(){
+        Desktop enlace=Desktop.getDesktop();
+        try {
+                enlace.browse(URI.create("https://accounts.google.com/signin/v2/identifier?hl=es-419&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin"));
+        } catch (IOException e) {
+            e.getMessage();
+        }
+    }
+      
+    /**
+     * This method create a link a twitter
+     */
+    
+    private void enlaceGitHub(){
+        Desktop enlace=Desktop.getDesktop();
+        try {
+                enlace.browse(URI.create("https://github.com/"));
+        } catch (IOException e) {
+            e.getMessage();
+        }
+    }
+    
     private void cajaUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cajaUserActionPerformed
@@ -155,7 +220,43 @@ catch (Exception e)
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         System.out.println("usar");
     }//GEN-LAST:event_btnEntrarActionPerformed
-    
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        int co = JOptionPane.YES_NO_OPTION;
+        int res = JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?", "Exit", co);
+        if (res == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+         this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() - y);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Se envió un correo para restaurar "
+            + "su contraseña");
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabelGoogleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGoogleMouseClicked
+        // TODO add your handling code here:
+        enlaceGoogle();
+    }//GEN-LAST:event_jLabelGoogleMouseClicked
+
+    private void jLabelGithubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelGithubMouseClicked
+        // TODO add your handling code here:
+        enlaceGitHub();
+    }//GEN-LAST:event_jLabelGithubMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEntrar;

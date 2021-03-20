@@ -5,7 +5,7 @@
  */
 package modelo;
 
-import java.sql.Connection;
+//import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,12 +30,12 @@ public class Conexion {
     try {
        
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestor_de_archivo","root","root");
-        System.out.println("coectado");
+        System.out.println("conectado");
     }
     catch (Exception e) {
         try {
            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestor_de_archivo","root",""); 
-           System.out.println("coectado");
+           System.out.println("conectado");
         } catch (Exception er) {
              e.printStackTrace(System.out);
         JOptionPane.showMessageDialog(null, "Error al intentar conectar a la base de datos",

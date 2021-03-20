@@ -25,12 +25,16 @@ public class validacionesBD {
             try {
             
             st = cn.createStatement();
-            String sql="SELECT id_dpto FROM usuarios WHERE user='"+user+"' AND contraseña='"+contra+"';";
+            String sql="SELECT id_dpto,user,contra FROM usuarios";
             resultado = st.executeQuery(sql);
             
             while(resultado.next()){
-               
-                 dpto=resultado.getInt("id_dpto");
+                String us=resultado.getString("user");
+                String contr=resultado.getString("contra");
+               if(user.equals(us) && contra.equals(contr)){
+                    dpto=resultado.getInt("id_dpto");
+               }
+                 
                
             }
             
