@@ -5,6 +5,10 @@
  */
 package views;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+
 /**
  *
  * @author klein
@@ -16,6 +20,17 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+         try{
+ 
+  JFrame.setDefaultLookAndFeelDecorated(true);
+  JDialog.setDefaultLookAndFeelDecorated(true);  
+  UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+  //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+}
+catch (Exception e)
+ {
+  e.printStackTrace();
+ }
     }
 
     /**
@@ -32,13 +47,13 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabeluser = new javax.swing.JLabel();
         jLabelpassword = new javax.swing.JLabel();
-        jTextFieldUser = new javax.swing.JTextField();
+        cajaUser = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jRadioButton1 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
-        jButtonAceptarLogin = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        btnEntrar = new javax.swing.JButton();
+        cajaContra = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabelGoogle = new javax.swing.JLabel();
         jLabelGithub = new javax.swing.JLabel();
@@ -47,7 +62,6 @@ public class login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(550, 150));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(706, 490));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,14 +81,14 @@ public class login extends javax.swing.JFrame {
         jLabelpassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/padlock.png"))); // NOI18N
         jPanel1.add(jLabelpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
-        jTextFieldUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldUser.setBorder(null);
-        jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
+        cajaUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cajaUser.setBorder(null);
+        cajaUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUserActionPerformed(evt);
+                cajaUserActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 180, 30));
+        jPanel1.add(cajaUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 180, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 190, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 190, 10));
 
@@ -87,17 +101,22 @@ public class login extends javax.swing.JFrame {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 130, 20));
 
-        jButtonAceptarLogin.setBackground(new java.awt.Color(0, 153, 101));
-        jButtonAceptarLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAceptarLogin.setText("INGRESAR");
-        jButtonAceptarLogin.setBorder(null);
-        jButtonAceptarLogin.setBorderPainted(false);
-        jButtonAceptarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonAceptarLogin.setFocusable(false);
-        jPanel1.add(jButtonAceptarLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 200, 30));
+        btnEntrar.setBackground(new java.awt.Color(0, 153, 101));
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("INGRESAR");
+        btnEntrar.setBorder(null);
+        btnEntrar.setBorderPainted(false);
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setFocusable(false);
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 200, 30));
 
-        jPasswordField1.setBorder(null);
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 180, 30));
+        cajaContra.setBorder(null);
+        jPanel1.add(cajaContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 180, 30));
 
         jLabel3.setText("Ingresar con:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
@@ -129,13 +148,19 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
+    private void cajaUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUserActionPerformed
+    }//GEN-LAST:event_cajaUserActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        System.out.println("usar");
+    }//GEN-LAST:event_btnEntrarActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButtonAceptarLogin;
+    public javax.swing.JButton btnEntrar;
+    public javax.swing.JPasswordField cajaContra;
+    public javax.swing.JTextField cajaUser;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -146,10 +171,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelpassword;
     private javax.swing.JLabel jLabeluser;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    public javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
 }
